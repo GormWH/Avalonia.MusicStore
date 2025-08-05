@@ -2,8 +2,11 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.MusicStore.Messages;
 using Avalonia.MusicStore.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Avalonia.MusicStore.ViewModels;
 
@@ -15,6 +18,15 @@ public partial class MusicStoreViewModel : ViewModelBase
     [ObservableProperty] public partial bool IsBusy { get; private set; }
     [ObservableProperty] public partial AlbumViewModel? SelectedAlbum { get; set; }
     public ObservableCollection<AlbumViewModel> SearchResults { get; } = new();
+
+    [RelayCommand]
+    private void BuyMusic()
+    {
+        if (SelectedAlbum != null)
+        {
+            WeakReferenceMessenger.Default.Send(new MusicStoreClosedMessage(SelectedAlbum));
+        }
+    }
     
     private async Task DoSearch(string? term)
     {
