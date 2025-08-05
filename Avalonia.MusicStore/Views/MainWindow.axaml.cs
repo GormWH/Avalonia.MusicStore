@@ -18,7 +18,7 @@ public partial class MainWindow : Window
         {
             var dialog = new MusicStoreWindow
             {
-                DataContext = new MusicStoreWindowViewModel()
+                DataContext = new MusicStoreViewModel()
             };
             m.Reply(dialog.ShowDialog<AlbumViewModel>(w));
         });
