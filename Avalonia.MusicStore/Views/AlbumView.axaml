@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Avalonia.MusicStore.Views.AlbumView">
     <Design.DataContext>
-        <vm:AlbumViewModel/>
+        <vm:AlbumViewModel />
     </Design.DataContext>
     <StackPanel Spacing="5" Width="200">
         <Border CornerRadius="10" ClipToBounds="True">
@@ -17,6 +17,8 @@
                     <PathIcon Height="75" Width="75" Data="{StaticResource music_regular}" />
                 </Panel>
             </Panel>
-        </Border>    
+        </Border>
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Title}" />
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Artist}" />
     </StackPanel>
 </UserControl>
